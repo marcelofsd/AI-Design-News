@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1440"/>
+<title>A.i. Design News — Weekly feed for creative AI &amp; archviz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<style>
+:root{
+  --paper:#f3efe7;
+  --paper-2:#ebe5d9;
+  --ink:#14110d;
+  --ink-2:#3b342a;
+  --muted:#7a7167;
+  --rule:#1a1713;
+  --rule-soft:rgba(20,17,13,.14);
+  --accent:oklch(0.62 0.14 45);
+  --accent-2:oklch(0.55 0.09 220);
+  --chip:#ffffff;
+  --shadow:0 1px 0 rgba(20,17,13,.04);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+body{font-feature-settings:"ss01","cv11"}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.hair{border:0;border-top:1px solid var(--rule);margin:0}
+.hair-soft{border:0;border-top:1px solid var(--rule-soft);margin:0}
+
+/* placeholder art */
+.ph{position:relative;overflow:hidden;background:var(--paper-2)}
+.ph::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(20,17,13,.07) 0 6px,transparent 6px 14px)}
+.ph .ph-label{position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--paper);padding:3px 6px;border:1px solid var(--rule)}
+.ph.tint-a{background:oklch(0.86 0.05 45)}
+.ph.tint-b{background:oklch(0.84 0.04 140)}
+.ph.tint-c{background:oklch(0.82 0.04 240)}
+.ph.tint-d{background:oklch(0.88 0.03 80)}
+.ph.tint-e{background:oklch(0.80 0.04 20)}
+.ph.tint-f{background:oklch(0.86 0.03 300)}
+.ph.tint-g{background:oklch(0.78 0.05 160)}
+.ph.tint-h{background:#1a1713;color:#f3efe7}
+.ph.tint-h::before{background-image:repeating-linear-gradient(135deg,rgba(243,239,231,.08) 0 6px,transparent 6px 14px)}
+.ph.tint-h .ph-label{background:#1a1713;color:#f3efe7;border-color:#f3efe7}
+
+/* thumb image override */
+.thumb-img{position:relative;overflow:hidden}
+.thumb-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.thumb-img .ph-label{z-index:2}
+
+/* buttons / chips */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--rule);background:transparent;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid var(--rule);border-radius:999px;background:var(--chip);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);cursor:pointer;white-space:nowrap;transition:all .15s}
+.chip:hover{background:var(--ink);color:var(--paper)}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip.accent.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* dots */
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink);vertical-align:middle}
+.dot.accent{background:var(--accent)}
+.pulse{position:relative}
+.pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--accent);animation:pulse 2s ease-out infinite;opacity:0}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+
+/* layout */
+.wrap{max-width:1440px;margin:0 auto;padding:0 48px}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em;font-size:18px}
+.brand .mk{width:22px;height:22px;border:1.5px solid var(--ink);border-radius:50%;position:relative}
+.brand .mk::after{content:"";position:absolute;inset:4px;background:var(--ink);border-radius:50%}
+.navlinks{display:flex;gap:36px;justify-content:center}
+.navlinks a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid transparent;cursor:pointer}
+.navlinks a.active{border-bottom-color:var(--ink)}
+.navlinks a:hover{border-bottom-color:var(--accent)}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:14px}
+
+/* masthead */
+.masthead{padding:36px 0 28px;text-align:center}
+.masthead .kicker{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--ink-2)}
+.masthead h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(80px,14.5vw,220px);line-height:.82;letter-spacing:-.045em;margin:18px 0 0}
+.masthead h1 .ai{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.02em}
+.masthead .sub{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:22px;color:var(--ink-2)}
+.masthead .sub .serif{font-size:22px;color:var(--ink)}
+
+/* filter bar */
+.filterbar{display:flex;align-items:center;gap:18px;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.filterbar .label{flex-shrink:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.weekpicker{display:flex;align-items:center;gap:10px;margin-left:auto}
+
+/* live fetch bar */
+.fetchbar{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule-soft);flex-wrap:wrap}
+.fetch-progress{flex:1;height:2px;background:var(--paper-2);border-radius:1px;overflow:hidden}
+.fetch-progress-inner{height:100%;background:var(--accent);border-radius:1px;transition:width .3s ease;width:0%}
+.fetch-msg{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{display:inline-block;width:10px;height:10px;border:1.5px solid var(--rule-soft);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:0;border-bottom:1px solid var(--rule)}
+.hero .art{aspect-ratio:4/3;border-right:1px solid var(--rule)}
+.hero .body{padding:36px 40px;display:flex;flex-direction:column;gap:22px;justify-content:space-between}
+.hero .top{display:flex;align-items:center;justify-content:space-between}
+.hero .title{font-family:'Archivo',sans-serif;font-weight:700;font-size:48px;line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.hero .title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.hero .dek{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:52ch}
+.hero .meta{display:flex;gap:24px;align-items:center;color:var(--muted)}
+.hero .actions{display:flex;gap:10px;align-items:center}
+
+/* grid */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;padding:28px 0 16px}
+.section-head h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:28px;letter-spacing:-.01em;margin:0}
+.section-head .right{display:flex;gap:14px;align-items:center;color:var(--muted)}
+.feed{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.card{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper);padding:18px 18px 22px;display:flex;flex-direction:column;gap:14px;position:relative;transition:background .2s;cursor:pointer}
+.card:hover{background:#faf6ee}
+.card .cmeta{display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);gap:8px}
+.card .cmeta .rank{display:inline-flex;align-items:center;gap:6px;color:var(--ink);white-space:nowrap}
+.card .cmeta .tag{padding:3px 9px;border:1px solid var(--rule);border-radius:999px;color:var(--ink);white-space:nowrap}
+.card .cmeta .tag.hot{background:var(--accent);color:#fff;border-color:var(--accent)}
+.card .art{aspect-ratio:5/3.3}
+.card h3{font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;line-height:1.15;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.card h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.card .exc{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin:0}
+.card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--rule-soft)}
+.card .read{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+.card .read .arr{transition:transform .15s}
+.card:hover .read .arr{transform:translateX(4px)}
+.card .pop{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.bars{display:inline-flex;gap:2px;align-items:end;height:10px}
+.bars i{width:3px;background:var(--ink);display:block;opacity:.35}
+.bars i.on{opacity:1}
+.bars i.on.accent{background:var(--accent)}
+.card.wide{grid-column:span 2}
+.card.dark{background:#14110d;color:var(--paper)}
+.card.dark h3,.card.dark .read{color:var(--paper)}
+.card.dark .exc{color:#c9c2b5}
+.card.dark .foot{border-top-color:rgba(243,239,231,.15)}
+.card.dark .cmeta{color:#a49c91}
+.card.dark .cmeta .rank{color:var(--paper)}
+.card.dark .cmeta .tag{border-color:#f3efe7;color:#f3efe7}
+.card.dark .bars i{background:var(--paper)}
+.card.dark:hover{background:#1b1713}
+.card .srcline{display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card .srcline a{color:var(--ink);border-bottom:1px solid var(--rule-soft)}
+.card .srcline a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.card.dark .srcline{color:#a49c91}
+.card.dark .srcline a{color:var(--paper);border-bottom-color:rgba(243,239,231,.2)}
+.card.read-state{opacity:.62}
+.card.read-state:hover{opacity:1}
+.card .read-dot{display:inline-flex;align-items:center;gap:6px;color:var(--accent)}
+.card .read-dot .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.card.read-state .read-dot{color:var(--muted)}
+.card.read-state .read-dot .d{background:transparent;border:1px solid var(--muted)}
+.card.li-card{border-left:3px solid #0A66C2}
+
+/* skeleton */
+.skel-card{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper);padding:18px 18px 22px;display:flex;flex-direction:column;gap:14px}
+.skel-line{height:10px;border-radius:2px;background:var(--paper-2);position:relative;overflow:hidden}
+.skel-line::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(20,17,13,.05),transparent);animation:shim 1.6s ease-in-out infinite}
+@keyframes shim{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.skel-art{aspect-ratio:5/3.3;background:var(--paper-2);position:relative;overflow:hidden}
+.skel-art::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(20,17,13,.05),transparent);animation:shim 1.6s ease-in-out infinite}
+
+/* sources strip */
+.sources{display:grid;grid-template-columns:auto repeat(6,1fr);align-items:center;gap:24px;padding:22px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sources .lab{color:var(--muted)}
+.src{display:flex;align-items:center;justify-content:center;gap:10px;opacity:.85;font-family:'Archivo',sans-serif;font-weight:600;letter-spacing:.02em;font-size:13px;padding:8px 0;border-left:1px solid var(--rule-soft)}
+.src:first-of-type{border-left:0}
+.src .glyph{width:20px;height:20px;display:inline-block;border:1.5px solid var(--ink);flex-shrink:0}
+.src .glyph.circle{border-radius:50%}
+.src .glyph.tri{border:none;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid var(--ink)}
+.src .glyph.dia{transform:rotate(45deg)}
+.src .glyph.bar{background:var(--ink)}
+.src .glyph.half{background:linear-gradient(to right,var(--ink) 50%,transparent 50%)}
+
+/* history */
+.history{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.hcell{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:22px;display:flex;flex-direction:column;gap:12px;cursor:pointer;transition:background .15s}
+.hcell:hover{background:#faf6ee}
+.hcell.current{background:#14110d;color:var(--paper)}
+.hcell .wk{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.hcell h4{font-family:'Archivo',sans-serif;font-weight:600;font-size:16px;letter-spacing:-.005em;margin:0;line-height:1.2}
+.hcell .stat{display:flex;gap:16px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:auto}
+.hcell.current .stat{color:#a49c91}
+
+/* footer */
+footer{margin-top:60px;border-top:1px solid var(--rule);padding:44px 0 32px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot-grid h5{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:500}
+.foot-grid a{display:block;padding:4px 0;font-size:14px;cursor:pointer}
+.foot-grid a:hover{color:var(--accent)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;margin-top:32px;border-top:1px solid var(--rule-soft);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.foot-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:64px;line-height:.9;letter-spacing:-.03em;margin:0}
+.foot-title .ai{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+
+/* modal */
+.scrim{position:fixed;inset:0;background:rgba(20,17,13,.55);z-index:80;display:flex;align-items:center;justify-content:center;padding:40px;animation:fadein .18s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.modal{background:var(--paper);max-width:980px;width:100%;max-height:90vh;overflow:auto;border:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;animation:rise .24s ease}
+@keyframes rise{from{transform:translateY(12px);opacity:0}to{transform:none;opacity:1}}
+.modal .m-art{aspect-ratio:auto;min-height:100%;border-right:1px solid var(--rule)}
+.modal .m-body{padding:36px 40px;display:flex;flex-direction:column;gap:20px}
+.modal h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:34px;line-height:1.08;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.modal h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.modal .m-meta{display:flex;gap:16px;flex-wrap:wrap;align-items:center;color:var(--muted)}
+.modal .m-summary{font-size:15px;line-height:1.58;color:var(--ink-2);margin:0}
+.modal .m-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:18px;border-top:1px solid var(--rule-soft)}
+.modal .close{position:absolute;top:16px;right:16px;background:transparent;border:0;font-size:24px;cursor:pointer;color:var(--ink);z-index:1}
+
+/* tweaks panel */
+.tweaks{position:fixed;right:20px;bottom:20px;width:300px;background:var(--paper);border:1px solid var(--rule);box-shadow:0 20px 40px rgba(20,17,13,.12);padding:16px;z-index:50;font-family:'Archivo',sans-serif}
+.tweaks h6{margin:0 0 10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.tweaks label{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--rule-soft);font-size:12.5px}
+.tweaks select,.tweaks input[type=range]{font-family:'JetBrains Mono',monospace;font-size:11px}
+.swatches{display:flex;gap:6px}
+.sw{width:18px;height:18px;border-radius:50%;border:1.5px solid transparent;cursor:pointer}
+.sw.on{border-color:var(--ink)}
+
+/* ask claude sidebar */
+.ask-panel{position:fixed;right:20px;top:50%;transform:translateY(-50%);width:280px;background:var(--paper);border:1px solid var(--rule);box-shadow:0 20px 40px rgba(20,17,13,.1);z-index:49;font-family:'Archivo',sans-serif}
+.ask-panel-head{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between}
+.ask-panel-head h6{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin:0}
+.ask-textarea{width:100%;border:0;background:transparent;padding:14px;font-family:'Archivo',sans-serif;font-size:13px;line-height:1.5;resize:none;outline:none;color:var(--ink)}
+.ask-textarea::placeholder{color:var(--muted)}
+.ask-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-top:1px solid var(--rule-soft)}
+.ask-hint{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ask-resp{border-top:1px solid var(--rule-soft);padding:14px;font-size:12.5px;line-height:1.6;color:var(--ink-2);max-height:220px;overflow-y:auto}
+.ask-resp.ai-border{border-left:2px solid var(--accent);padding-left:12px;margin:0 14px 14px}
+
+@media(max-width:900px){.main-layout{grid-template-columns:1fr}.ask-panel{display:none}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="application/json" id="tweak-defaults">
+/*EDITMODE-BEGIN*/{
+  "accentHue": 45,
+  "density": "comfortable",
+  "showHistory": true,
+  "showSources": true
+}/*EDITMODE-END*/
+</script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef } = React;
+const DEFAULTS = JSON.parse(document.getElementById('tweak-defaults').textContent.replace(/\/\*EDITMODE-[A-Z]+\*\//g,''));
+
+const MODEL = "claude-sonnet-4-5";
+const API_URL = "https://api.anthropic.com/v1/messages";
+const API_KEY = (typeof ANTHROPIC_API_KEY !== 'undefined') ? ANTHROPIC_API_KEY : "";
+
+// ── Static data (from uploaded design) ────────────────────────────────────
+const TOPICS = [
+  {id:'all',label:'All'},
+  {id:'img',label:'Image Gen'},
+  {id:'people',label:'People'},
+  {id:'material',label:'Materials'},
+  {id:'model',label:'Text/Img → 3D'},
+  {id:'i2v',label:'Image→Video'},
+  {id:'v2v',label:'Video→Video'},
+  {id:'upscale',label:'Upscaling'},
+  {id:'plugins',label:'Plugins'},
+  {id:'integrations',label:'Integrations'},
+];
+
+const STATIC_FEATURED = {
+  kicker:"Featured — Week 17 · 2026",
+  tag:"Image→Video",
+  title:["Seedance 1.5 lands with ",{em:"continuity control"}," — and archviz walkthroughs finally hold their geometry"],
+  dek:"The new temporal lock dramatically reduces structural drift across camera moves, making 20-second interior flythroughs viable on a single prompt. We ran it against Kling 2.1 and Project Dream on three interior scenes.",
+  meta:{source:"Creative AI Weekly",date:"Apr 19, 2026",read:"8 min",pop:94},
+  placeholder:"interior flythrough · seedance 1.5",
+  href:"#",
+  tint:"h",
+  r:0,
+  hot:true,
+  summary:"The new temporal lock dramatically reduces structural drift across camera moves, making 20-second interior flythroughs viable on a single prompt. Full comparison inside.",
+};
+
+const STATIC_POSTS = [
+  {r:1,tag:"Image Gen",topic:["img","people"],hot:true,dark:false,wide:false,tint:"a",title:["Seedream v4 consistency pack: ",{em:"same face, 200 frames"}],src:"Seedream · Release notes",href:"#",date:"Apr 21",read:"5 min",pop:92,exc:"Identity lock holds across angle, wardrobe and lighting changes — practitioners are already using it for populated archviz renders.",summary:"Seedream's v4 drop ships an identity token that survives prompt rewrites, camera angle changes, outfit swaps, and lighting shifts. We tested 200 consecutive frames with a single locked face across three interior scenes.",ph:"character sheet · 12 variants"},
+  {r:2,tag:"Text/Img → 3D",topic:["model"],hot:true,dark:false,wide:false,tint:"b",title:["Google Nano Banana adds ",{em:"mesh export"}," from a single reference"],src:"Google Labs",href:"#",date:"Apr 20",read:"6 min",pop:88,exc:"A furniture-scale reference turns into a retopologized OBJ with materials split — we stress-tested 40 props.",summary:"Nano Banana now outputs a clean quad-dominant retopo with PBR maps separated by channel. Hard-surface props are production-ready.",ph:"single-image → OBJ"},
+  {r:3,tag:"Image→Video",topic:["i2v"],hot:true,dark:true,wide:false,tint:"h",title:["Kling 2.1 vs. Seedance vs. Project Dream — ",{em:"the archviz shootout"}],src:"Studio Notes",href:"#",date:"Apr 18",read:"11 min",pop:86,exc:"We ran the same five interior scenes through all three. Temporal coherence, reflections, fabric physics — ranked.",summary:"Five interior scenes, identical reference stills, matched prompts. Seedance wins on structural continuity; Kling 2.1 on reflections and glass; Project Dream on fabric and volumetric light.",ph:"side by side · 5 scenes"},
+  {r:4,tag:"Plugins",topic:["plugins","integrations"],hot:false,dark:false,wide:false,tint:"d",title:["3ds Max plugin ",{em:"Atelier 2.0"}," brings live diffusion into the viewport"],src:"Atelier",href:"#",date:"Apr 17",read:"4 min",pop:81,exc:"Paint masks directly on geometry; the generator reacts to lighting and camera without leaving Max.",summary:"Atelier 2.0 patches into Max's viewport, so masks painted on geometry drive generation in real time. V-Ray and Corona lighting pass through.",ph:"3ds max · live diffusion"},
+  {r:5,tag:"Materials",topic:["material"],hot:false,dark:false,wide:false,tint:"e",title:["A practical guide to ",{em:"material upgrading"}," with Seedream + Substance"],src:"LinkedIn — M. Alvarez",href:"#",date:"Apr 17",read:"7 min",pop:78,exc:"A production-ready pipeline for bumping procedural materials to photo-grade without retopo.",summary:"Alvarez walks through a Substance → Seedream → Substance roundtrip that preserves UVs and seams while replacing albedo and roughness with photo-grade detail.",ph:"worn oak · before / after",isLinkedin:true},
+  {r:6,tag:"People",topic:["people"],hot:false,dark:false,wide:false,tint:"c",title:["Populating a plaza: ",{em:"45 consistent extras"}," in 20 minutes"],src:"YouTube — Archviz Co.",href:"#",date:"Apr 16",read:"3 min",pop:74,exc:"Using Seedream identity tokens to stage crowd scenes without cloning artifacts.",summary:"Identity tokens per extra, batched through Seedream's crowd mode, then composited into a render with depth-aware masking.",ph:"plaza populate · test"},
+  {r:7,tag:"Image Gen",topic:["img"],hot:false,dark:false,wide:false,tint:"f",title:["FLUX Pro 2.0 pushes ",{em:"interior detail"}," past diffusion-era limits"],src:"Black Forest Labs",href:"#",date:"Apr 16",read:"6 min",pop:72,exc:"Higher-frequency micro-detail on fabrics, veneers and stone without the usual noise penalty.",summary:"Black Forest's 2.0 checkpoint tightens micro-detail on natural materials and furniture grain without the noise amplification earlier versions showed.",ph:"flux · micro-detail"},
+  {r:8,tag:"Image Gen",topic:["img"],hot:false,dark:false,wide:false,tint:"f",title:["Project Dream opens ",{em:"director mode"}," to pro accounts"],src:"Project Dream Blog",href:"#",date:"Apr 15",read:"5 min",pop:71,exc:"Shot lists, lens choice, and continuity notes feed the generator directly.",summary:"Director mode takes a structured brief — shot list, lens, continuity notes — and returns a pre-edited sequence. Early studios report a 3–4× speed-up on presentation boards.",ph:"director mode · ui"},
+  {r:9,tag:"Integrations",topic:["integrations","plugins"],hot:false,dark:false,wide:false,tint:"g",title:["Photoshop ",{em:"Generate & Replace"}," now reads depth from a .EXR"],src:"Adobe MAX preview",href:"#",date:"Apr 15",read:"4 min",pop:68,exc:"Depth-aware replacement makes product swaps inside an interior render almost seamless.",summary:"Photoshop's Generate & Replace can now consume a .EXR depth pass alongside the beauty render, letting swaps respect scene parallax.",ph:"ps · depth-aware swap"},
+  {r:10,tag:"Upscaling",topic:["upscale","v2v"],hot:false,dark:false,wide:false,tint:"a",title:["Magnific Video v2: ",{em:"4K walkthroughs"}," from 1080 Seedance clips"],src:"Magnific",href:"#",date:"Apr 15",read:"5 min",pop:67,exc:"Temporal-aware upscaling that doesn't melt edges on glazing and fine trim.",summary:"Magnific's second-gen video upscaler introduces a temporal stabilizer tuned for architectural edges; glazing, mullions and trim survive intact.",ph:"1080 → 4K · video"},
+  {r:11,tag:"Video→Video",topic:["v2v"],hot:false,dark:false,wide:false,tint:"a",title:["Turning a ",{em:"Matterport tour"}," into a stylized walkthrough"],src:"Case study",href:"#",date:"Apr 14",read:"9 min",pop:65,exc:"V2V re-lighting and seasonal restyle from a stock scan — what broke, what worked.",summary:"A Matterport scan of a spec apartment, re-lit and restyled across four seasons via V2V. Geometry held; stitching across rooms was the hardest part.",ph:"matterport → v2v"},
+  {r:12,tag:"Text/Img → 3D",topic:["model"],hot:false,dark:false,wide:false,tint:"b",title:[{em:"Furniture library"}," generation: benchmarks across four models"],src:"Studio Notes",href:"#",date:"Apr 13",read:"6 min",pop:61,exc:"Chairs, lamps and sideboards — dimensional accuracy, UVs, and materials compared.",summary:"Fifty-piece furniture set generated across Nano Banana, Hunyuan-3D, Trellis and Meshy. Dimensional accuracy, UV quality, and material layout ranked.",ph:"50-piece furniture set"},
+  {r:13,tag:"Image Gen",topic:["img"],hot:false,dark:false,wide:false,tint:"f",title:["Hunyuan Image 3 lands with ",{em:"native interior"}," prompts"],src:"Tencent Hunyuan",href:"#",date:"Apr 13",read:"5 min",pop:60,exc:"Purpose-trained room, furniture and lighting vocabulary.",summary:"Hunyuan Image 3 ships with an archviz-trained vocabulary — floor plans, lighting setups and materials are first-class prompts.",ph:"hunyuan · interior test"},
+  {r:14,tag:"Image→Video",topic:["i2v"],hot:false,dark:false,wide:false,tint:"d",title:["A 30-second ",{em:"slow dolly"}," from a still render — Seedance recipe"],src:"LinkedIn — J. Park",href:"#",date:"Apr 13",read:"3 min",pop:58,exc:"Prompt structure, negative cues and the right keyframe — nothing mystical.",summary:"A simple, reproducible recipe: single still + dolly keyframe + tight negative prompt gets a believable 30-second slow push without drift.",ph:"still → dolly · recipe",isLinkedin:true},
+  {r:15,tag:"Plugins",topic:["plugins"],hot:false,dark:false,wide:false,tint:"e",title:["Rhino + Grasshopper ",{em:"generative brief"}," component released"],src:"Food4Rhino",href:"#",date:"Apr 12",read:"4 min",pop:54,exc:"Feed a brief, parametrically iterate on program and form; visualize each option.",summary:"A Grasshopper component that reads a structured brief, iterates over program and massing in parallel, and renders each option through a linked image model.",ph:"rhino · brief → form"},
+];
+
+const WEEKS = [
+  {id:"w17",label:"Week 17",dates:"Apr 19 – 25, 2026",posts:15,current:true,head:"Seedance 1.5 · Nano Banana mesh · Kling shootout"},
+  {id:"w16",label:"Week 16",dates:"Apr 12 – 18, 2026",posts:15,head:"Project Dream director mode · Atelier 2.0"},
+  {id:"w15",label:"Week 15",dates:"Apr 05 – 11, 2026",posts:15,head:"Substance × Seedream pipelines"},
+  {id:"w14",label:"Week 14",dates:"Mar 29 – Apr 04, 2026",posts:15,head:"Photoshop depth-aware · Rhino generative"},
+];
+
+const SOURCES_LIST = [
+  {name:"Creative AI Weekly",glyph:"circle"},
+  {name:"Studio Notes",glyph:"bar"},
+  {name:"Project Dream",glyph:"tri"},
+  {name:"Seedream Labs",glyph:"dia"},
+  {name:"LinkedIn Feed",glyph:"half"},
+  {name:"YouTube Tests",glyph:"circle"},
+];
+
+const QUERIES = [
+  {src:"Seedream / ByteDance",topic:["img","people"],tint:"a",q:"Seedream ByteDance image generation AI architecture visualization 2025 2026"},
+  {src:"Seedance",topic:["i2v","v2v"],tint:"b",q:"Seedance SeedVR ByteDance video generation architecture 2025 2026"},
+  {src:"Kling AI",topic:["i2v","v2v"],tint:"h",q:"Kling AI 2.0 video generation architecture interior design 2025 2026",dark:true},
+  {src:"Google DeepMind",topic:["img","i2v"],tint:"c",q:"Google Veo Nano Banana DeepMind image video generation architecture 2025 2026"},
+  {src:"Runway ML",topic:["v2v","i2v"],tint:"e",q:"Runway ML Gen4 video architecture visualization 2025 2026"},
+  {src:"Stability AI",topic:["img","material"],tint:"f",q:"Stable Diffusion 3.5 architecture interior rendering material 2025"},
+  {src:"Midjourney",topic:["img"],tint:"d",q:"Midjourney v7 architecture visualization style reference 2025 2026"},
+  {src:"Hugging Face",topic:["model","material"],tint:"g",q:"Hugging Face 3D model generation texture material architecture AI 2025"},
+  {src:"LinkedIn",topic:["img","i2v","v2v"],tint:"a",q:"architect interior designer AI workflow test LinkedIn 2025 2026",isLinkedin:true},
+  {src:"LinkedIn",topic:["v2v","model"],tint:"b",q:"archviz AI Kling Runway Seedance video comparison LinkedIn 2025",isLinkedin:true},
+];
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+async function getThumb(url) {
+  if (!url || url === "#") return null;
+  try {
+    const r = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}&meta=false`);
+    const d = await r.json();
+    return d?.data?.image?.url || null;
+  } catch { return null; }
+}
+
+async function callClaude(messages, system) {
+  const headers = { "Content-Type": "application/json" };
+  if (API_KEY) {
+    headers["x-api-key"] = API_KEY;
+    headers["anthropic-version"] = "2023-06-01";
+    headers["anthropic-dangerous-direct-browser-access"] = "true";
+  }
+  const r = await fetch(API_URL, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      model: MODEL, max_tokens: 1000, system, messages,
+      tools: [{ type: "web_search_20250305", name: "web_search" }],
+    }),
+  });
+  if (!r.ok) throw new Error(`API ${r.status}`);
+  const data = await r.json();
+  return data.content.map(b => b.type === "text" ? b.text : "").filter(Boolean).join("\n");
+}
+
+function renderTitle(parts) {
+  if (!parts) return null;
+  if (typeof parts === "string") return parts;
+  return parts.map((p, i) => typeof p === "string"
+    ? <React.Fragment key={i}>{p}</React.Fragment>
+    : <em key={i}>{p.em}</em>
+  );
+}
+
+// ── UI Primitives ──────────────────────────────────────────────────────────
+function Placeholder({ label, tint = "a", className = "", thumb = null }) {
+  if (thumb) {
+    return (
+      <div className={`ph tint-${tint} thumb-img ${className}`}>
+        <img src={thumb} alt={label || ""} loading="lazy"
+          onError={e => { e.target.style.display = "none"; }}/>
+        {label && <span className="ph-label">{label}</span>}
+      </div>
+    );
+  }
+  return (
+    <div className={`ph tint-${tint} ${className}`}>
+      {label && <span className="ph-label">{label}</span>}
+    </div>
+  );
+}
+
+function Bars({ n = 5, on = 3, accent = false }) {
+  return (
+    <span className="bars">
+      {Array.from({ length: n }).map((_, i) => {
+        const active = i < on;
+        return <i key={i} className={active ? `on ${accent ? "accent" : ""}` : ""} style={{ height: `${3 + i * 1.6}px` }} />;
+      })}
+    </span>
+  );
+}
+
+function SkelCard() {
+  return (
+    <div className="skel-card">
+      <div className="skel-line" style={{ width: "30%", marginBottom: 8 }} />
+      <div className="skel-art" />
+      <div className="skel-line" style={{ width: "90%" }} />
+      <div className="skel-line" style={{ width: "70%" }} />
+      <div className="skel-line" style={{ width: "95%", marginTop: 8 }} />
+      <div className="skel-line" style={{ width: "60%", marginTop: "auto", paddingTop: 8 }} />
+    </div>
+  );
+}
+
+// ── Components ─────────────────────────────────────────────────────────────
+function Nav({ onRefresh, fetching }) {
+  return (
+    <nav className="nav">
+      <div className="brand"><span className="mk" /><span>A.i. Design News</span></div>
+      <div className="navlinks">
+        <a className="active" href="#">Home</a>
+        <a href="#topics">Topics</a>
+        <a href="#sources">Sources</a>
+        <a href="#history">History</a>
+        <a href="#about">About</a>
+      </div>
+      <div className="nav-right">
+        <span className="mono" style={{ color: "var(--muted)" }}>Next refresh · Sun 07:00 CET</span>
+        <button className="btn" onClick={onRefresh} disabled={fetching}>
+          {fetching ? <><span className="spinner" />Fetching…</> : "Refresh ↻"}
+        </button>
+        <a className="btn solid" href="#history">History →</a>
+      </div>
+    </nav>
+  );
+}
+
+function Masthead({ updatedLabel, totalLive }) {
+  return (
+    <section className="masthead">
+      <div className="kicker mono">
+        <span>Issue № 17</span><span>·</span>
+        <span>Week of Apr 19, 2026</span><span>·</span>
+        <span className="pulse"><span className="dot accent" /></span>
+        <span style={{ color: "var(--accent)" }}>Live</span>
+        {updatedLabel && <><span>·</span><span>Updated {updatedLabel}</span></>}
+        {totalLive > 0 && <><span>·</span><span style={{ color: "var(--accent)" }}>{totalLive} live articles</span></>}
+      </div>
+      <h1><span className="ai">A.i.</span> Design News</h1>
+      <div className="sub">
+        <span className="mono">Creative AI for Archviz</span>
+        <span className="serif">— updates for image, video, materials &amp; workflow tools, every Sunday</span>
+      </div>
+    </section>
+  );
+}
+
+function FilterBar({ topic, setTopic, week, setWeek }) {
+  return (
+    <div className="filterbar" id="topics">
+      <span className="mono label" style={{ color: "var(--muted)" }}>Filter · Topic</span>
+      <div className="chips">
+        {TOPICS.map(t => (
+          <button key={t.id} className={`chip ${topic === t.id ? "on" : ""}`} onClick={() => setTopic(t.id)}>{t.label}</button>
+        ))}
+      </div>
+      <div className="weekpicker">
+        <span className="mono" style={{ color: "var(--muted)" }}>Week</span>
+        <select value={week} onChange={e => setWeek(e.target.value)}
+          style={{ border: "1px solid var(--rule)", background: "transparent", padding: "8px 12px", fontFamily: "JetBrains Mono, monospace", fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase" }}>
+          {WEEKS.map(w => <option key={w.id} value={w.id}>{w.label} — {w.dates}</option>)}
+        </select>
+      </div>
+    </div>
+  );
+}
+
+function FetchBar({ fetching, fetchMsg, fetchPct }) {
+  if (!fetching) return null;
+  return (
+    <div className="fetchbar">
+      <span className="fetch-msg"><span className="spinner" />{fetchMsg || "Connecting to sources…"}</span>
+      <div className="fetch-progress"><div className="fetch-progress-inner" style={{ width: fetchPct + "%" }} /></div>
+      <span className="mono" style={{ color: "var(--muted)" }}>{fetchPct}%</span>
+    </div>
+  );
+}
+
+function Hero({ post, onOpen }) {
+  const p = post || STATIC_FEATURED;
+  return (
+    <section className="hero" onClick={() => onOpen(p)} style={{ cursor: "pointer" }}>
+      <Placeholder className="art" tint={p.tint || "h"} label={p.placeholder || p.ph} thumb={p.thumb} />
+      <div className="body">
+        <div className="top">
+          <span className="mono" style={{ color: "var(--accent)" }}>{p.kicker || "Featured — Week 17 · 2026"}</span>
+          <span className="chip accent on">{p.tag}</span>
+        </div>
+        <h2 className="title">{renderTitle(p.title)}</h2>
+        <p className="dek">{p.dek || p.exc}</p>
+        <div className="meta mono">
+          <span>{p.meta ? p.meta.source : p.src}</span>
+          <span>{p.meta ? p.meta.date : p.date}</span>
+          <span>{p.meta ? p.meta.read : p.read}</span>
+          <span style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "var(--ink)" }}>
+            <Bars n={6} on={5} accent />
+            Pop {p.meta ? p.meta.pop : p.pop}
+          </span>
+        </div>
+        <div className="actions">
+          <button className="btn solid">Read feature →</button>
+          <button className="btn">Save</button>
+          <button className="btn">Share</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Card({ p, isRead, onOpen }) {
+  return (
+    <article
+      className={`card ${p.wide ? "wide" : ""} ${p.dark ? "dark" : ""} ${isRead ? "read-state" : ""} ${p.isLinkedin ? "li-card" : ""}`}
+      onClick={() => onOpen(p)}>
+      <div className="cmeta">
+        <span className="rank"><b>№ {String(p.r).padStart(2, "0")}</b></span>
+        <span className={`tag ${p.hot ? "hot" : ""}`}>{p.hot ? "Hot · " : ""}{p.tag}</span>
+      </div>
+      <Placeholder className="art" tint={p.tint || "a"} label={p.ph || p.placeholder} thumb={p.thumb} />
+      <h3>{renderTitle(p.title)}</h3>
+      <p className="exc">{p.exc}</p>
+      <div className="foot">
+        <a className="read" onClick={e => { e.stopPropagation(); onOpen(p); }}>Read <span className="arr">→</span></a>
+        <span className="pop">
+          <span className="read-dot"><span className="d" />{isRead ? "Read" : "New"}</span>
+          <Bars n={5} on={Math.round((p.pop || 50) / 20)} accent={p.hot} />
+          <span>{p.pop}</span>
+        </span>
+      </div>
+      <div className="srcline">
+        <a href={p.href || "#"} target="_blank" rel="noopener" onClick={e => e.stopPropagation()}>{p.src} ↗</a>
+        <span>{p.date}</span>
+      </div>
+    </article>
+  );
+}
+
+function Detail({ post, onClose, onMarkRead }) {
+  useEffect(() => {
+    if (!post) return;
+    onMarkRead(post.r);
+    const onKey = e => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [post]);
+  if (!post) return null;
+  return (
+    <div className="scrim" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()} style={{ position: "relative" }}>
+        <button className="close" onClick={onClose} aria-label="Close">×</button>
+        <Placeholder className="m-art" tint={post.tint || "a"} label={post.ph || post.placeholder} thumb={post.thumb} />
+        <div className="m-body">
+          <div className="cmeta">
+            <span className="rank mono"><b>№ {String(post.r).padStart(2, "0")}</b></span>
+            <span className={`tag mono ${post.hot ? "hot" : ""}`} style={{ padding: "3px 9px", border: "1px solid var(--rule)", borderRadius: 999 }}>
+              {post.hot ? "Hot · " : ""}{post.tag}
+            </span>
+          </div>
+          <h3>{renderTitle(post.title)}</h3>
+          <div className="m-meta mono">
+            <span>{post.src}</span><span>·</span>
+            <span>{post.date}</span><span>·</span>
+            <span>{post.read || "—"}</span>
+            <span style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "var(--ink)" }}>
+              <Bars n={5} on={Math.round((post.pop || 50) / 20)} accent={post.hot} /> Pop {post.pop || "—"}
+            </span>
+          </div>
+          <p className="m-summary">{post.summary || post.exc || post.dek}</p>
+          <div className="m-actions">
+            <a className="btn solid" href={post.href || "#"} target="_blank" rel="noopener">Open full post ↗</a>
+            <button className="btn">Save for later</button>
+            <button className="btn">Share</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Feed({ topic, posts, readSet, onOpen, fetching }) {
+  const topicMap = {
+    all: () => true,
+    img: p => (p.topic || []).includes("img"),
+    people: p => (p.topic || []).includes("people"),
+    material: p => (p.topic || []).includes("material"),
+    model: p => (p.topic || []).includes("model"),
+    i2v: p => (p.topic || []).includes("i2v"),
+    v2v: p => (p.topic || []).includes("v2v"),
+    upscale: p => (p.topic || []).includes("upscale"),
+    plugins: p => (p.topic || []).includes("plugins"),
+    integrations: p => (p.topic || []).includes("integrations"),
+  };
+  const filtered = posts.filter(topicMap[topic] || topicMap.all);
+  const unread = filtered.filter(p => !readSet.has(p.r)).length;
+  return (
+    <>
+      <div className="section-head">
+        <h2>Top {filtered.length} this week</h2>
+        <div className="right mono">
+          <span>{unread} unread · ranked by relevance, popularity, freshness</span>
+          <span>·</span>
+          <a href="#" style={{ color: "var(--accent)" }}>Load previous week ↓</a>
+        </div>
+      </div>
+      <div className="feed">
+        {fetching && filtered.length === 0
+          ? Array(6).fill(0).map((_, i) => <SkelCard key={i} />)
+          : filtered.map(p => <Card key={p.r} p={p} isRead={readSet.has(p.r)} onOpen={onOpen} />)
+        }
+      </div>
+    </>
+  );
+}
+
+function SourcesStrip() {
+  return (
+    <section id="sources" style={{ paddingTop: 40 }}>
+      <div className="sources">
+        <span className="mono lab">Sources we track</span>
+        {SOURCES_LIST.map((s, i) => (
+          <div key={i} className="src">
+            <span className={`glyph ${s.glyph}`} />
+            <span>{s.name}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function History({ week, setWeek }) {
+  return (
+    <section id="history" style={{ paddingTop: 40 }}>
+      <div className="section-head">
+        <h2>History — <span className="serif" style={{ fontSize: "inherit" }}>weekly archive</span></h2>
+        <div className="right mono">
+          <input placeholder="SEARCH TOPIC, SOURCE OR TOOL"
+            style={{ border: "1px solid var(--rule)", background: "transparent", padding: "10px 14px", fontFamily: "JetBrains Mono, monospace", fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase", width: 320 }} />
+          <button className="btn">Search</button>
+        </div>
+      </div>
+      <div className="history">
+        {WEEKS.map(w => (
+          <div key={w.id} className={`hcell ${week === w.id ? "current" : ""}`} onClick={() => setWeek(w.id)}>
+            <span className="wk">{w.label} {week === w.id && "· This week"}</span>
+            <h4>{w.head}</h4>
+            <div className="stat">
+              <span>{w.dates}</span>
+              <span style={{ marginLeft: "auto" }}>{w.posts} posts</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ textAlign: "center", padding: "28px 0 0" }}>
+        <button className="btn">Load older editions ↓</button>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <h3 className="foot-title"><span className="ai">A.i.</span> Design News<br />Every Sunday, 07:00 CET.</h3>
+      <div className="foot-grid" style={{ marginTop: 36 }}>
+        <div>
+          <h5>The newsletter</h5>
+          <div style={{ display: "flex", gap: 0, border: "1px solid var(--rule)", maxWidth: 420 }}>
+            <input placeholder="your@studio.com" style={{ flex: 1, border: 0, background: "transparent", padding: "14px 16px", fontSize: 14, fontFamily: "Archivo" }} />
+            <button className="btn solid" style={{ border: 0 }}>Subscribe →</button>
+          </div>
+          <p className="mono" style={{ color: "var(--muted)", marginTop: 12 }}>One email, Sunday morning. No slop.</p>
+        </div>
+        <div>
+          <h5>Feed</h5>
+          <a>This week</a><a>History</a><a>Topics</a><a>Sources</a>
+        </div>
+        <div>
+          <h5>Follow</h5>
+          <a>RSS</a><a>LinkedIn</a><a>YouTube</a><a>X / Twitter</a>
+        </div>
+        <div>
+          <h5>About</h5>
+          <a>Editorial policy</a><a>Submit a tip</a><a>Contact</a><a>Colophon</a>
+        </div>
+      </div>
+      <div className="foot-bottom">
+        <span>© 2026 A.i. Design News · Independent</span>
+        <span>Set in Archivo &amp; Instrument Serif · Built for archviz studios · Powered by Claude</span>
+      </div>
+    </footer>
+  );
+}
+
+function Tweaks({ state, setState, visible, onClose, onResetRead }) {
+  if (!visible) return null;
+  const swatches = [
+    { h: 45, name: "Terracotta" }, { h: 145, name: "Forest" },
+    { h: 240, name: "Cobalt" }, { h: 320, name: "Magenta" }, { h: 20, name: "Sienna" },
+  ];
+  return (
+    <div className="tweaks">
+      <h6>Tweaks <span style={{ cursor: "pointer" }} onClick={onClose}>×</span></h6>
+      <label>Accent
+        <div className="swatches">
+          {swatches.map(s => (
+            <span key={s.h} title={s.name} className={`sw ${state.accentHue === s.h ? "on" : ""}`}
+              style={{ background: `oklch(0.62 0.14 ${s.h})` }}
+              onClick={() => setState({ ...state, accentHue: s.h })} />
+          ))}
+        </div>
+      </label>
+      <label>Density
+        <select value={state.density} onChange={e => setState({ ...state, density: e.target.value })}>
+          <option value="comfortable">Comfortable</option>
+          <option value="tight">Tight</option>
+          <option value="loose">Loose</option>
+        </select>
+      </label>
+      <label>Show sources strip <input type="checkbox" checked={state.showSources} onChange={e => setState({ ...state, showSources: e.target.checked })} /></label>
+      <label>Show history <input type="checkbox" checked={state.showHistory} onChange={e => setState({ ...state, showHistory: e.target.checked })} /></label>
+      <label>Read state <button className="btn" style={{ padding: "4px 8px", fontSize: 10 }} onClick={onResetRead}>Mark all unread</button></label>
+    </div>
+  );
+}
+
+function AskPanel({ liveArticles }) {
+  const [q, setQ] = useState("");
+  const [resp, setResp] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(true);
+
+  const ask = async () => {
+    if (!q.trim()) return;
+    setLoading(true); setResp("");
+    const ctx = liveArticles.length > 0
+      ? liveArticles.slice(0, 10).map(a => `- ${a.src}: ${typeof a.title === "string" ? a.title : a.title.map(p => typeof p === "string" ? p : p.em).join("")} — ${a.exc || ""}`).join("\n")
+      : "No live articles loaded yet.";
+    const SYSTEM = `You are an expert AI consultant for architects and visualization professionals. Answer in 2-4 clear sentences. Be specific and practical. Use feed context when relevant.`;
+    try {
+      const ans = await callClaude([{ role: "user", content: `Feed context:\n${ctx}\n\nQuestion: ${q}` }], SYSTEM);
+      setResp(ans.trim());
+    } catch (e) { setResp(`Error: ${e.message}`); }
+    setLoading(false);
+  };
+
+  if (!open) return <button className="btn" style={{ position: "fixed", right: 20, bottom: 20, zIndex: 49 }} onClick={() => setOpen(true)}>Ask Claude ↗</button>;
+  return (
+    <div className="ask-panel">
+      <div className="ask-panel-head">
+        <h6>Ask Claude</h6>
+        <span className="mono" style={{ cursor: "pointer", color: "var(--muted)" }} onClick={() => setOpen(false)}>×</span>
+      </div>
+      <textarea className="ask-textarea" rows={3} value={q} onChange={e => setQ(e.target.value)}
+        placeholder="Which AI tools are best for material generation this week?"
+        onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(); } }} />
+      <div className="ask-footer">
+        <span className="ask-hint">claude-sonnet-4-5</span>
+        <button className="btn solid" style={{ padding: "6px 12px" }} onClick={ask} disabled={loading}>
+          {loading ? <><span className="spinner" />…</> : "Ask →"}
+        </button>
+      </div>
+      {(loading || resp) && (
+        <div className={`ask-resp ${resp ? "ai-border" : ""}`}>
+          {loading ? <><span className="spinner" />Thinking…</> : resp}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Main App ───────────────────────────────────────────────────────────────
+function App() {
+  const [topic, setTopic] = useState("all");
+  const [week, setWeek] = useState("w17");
+  const [tweaks, setTweaks] = useState(DEFAULTS);
+  const [tweaksOpen, setTweaksOpen] = useState(false);
+  const [openPost, setOpenPost] = useState(null);
+  const [readSet, setReadSet] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("ai-design-news-read") || "[]")); } catch { return new Set(); }
+  });
+  const [livePosts, setLivePosts] = useState([]);
+  const [fetching, setFetching] = useState(false);
+  const [fetchMsg, setFetchMsg] = useState("");
+  const [fetchPct, setFetchPct] = useState(0);
+  const [updatedLabel, setUpdatedLabel] = useState("");
+  const [heroPost, setHeroPost] = useState(null);
+
+  const markRead = r => setReadSet(prev => {
+    if (prev.has(r)) return prev;
+    const next = new Set(prev); next.add(r);
+    try { localStorage.setItem("ai-design-news-read", JSON.stringify([...next])); } catch {}
+    return next;
+  });
+  const resetRead = () => { setReadSet(new Set()); try { localStorage.removeItem("ai-design-news-read"); } catch {} };
+
+  // Merge: live posts override static by src match, else append
+  const allPosts = React.useMemo(() => {
+    if (livePosts.length === 0) return STATIC_POSTS;
+    // Number live posts continuing from static
+    const base = STATIC_POSTS.length;
+    return [...STATIC_POSTS, ...livePosts.map((p, i) => ({ ...p, r: base + i + 1 }))];
+  }, [livePosts]);
+
+  // Load feed.json (GitHub Pages) or localStorage on mount
+  useEffect(() => {
+    (async () => {
+      try {
+        const r = await fetch("./feed.json?t=" + Date.now());
+        if (r.ok) {
+          const data = await r.json();
+          if (data.articles && data.articles.length > 0) {
+            setLivePosts(data.articles);
+            if (data.articles[0]) setHeroPost(data.articles[0]);
+            const d = new Date(data.updated);
+            setUpdatedLabel(d.toLocaleDateString("en-US", { month: "short", day: "numeric" }));
+            return;
+          }
+        }
+      } catch {}
+      try {
+        const cached = localStorage.getItem("ai-design-news-live");
+        if (cached) {
+          const { articles, updated } = JSON.parse(cached);
+          setLivePosts(articles || []);
+          if (articles && articles[0]) setHeroPost(articles[0]);
+          const d = new Date(updated);
+          setUpdatedLabel(d.toLocaleDateString("en-US", { month: "short", day: "numeric" }));
+        }
+      } catch {}
+    })();
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--accent", `oklch(0.62 0.14 ${tweaks.accentHue})`);
+    const pad = tweaks.density === "tight" ? "12px 12px 16px" : tweaks.density === "loose" ? "26px 26px 30px" : "18px 18px 22px";
+    const style = document.getElementById("density-style") || (() => {
+      const s = document.createElement("style"); s.id = "density-style"; document.head.appendChild(s); return s;
+    })();
+    style.textContent = `.card{padding:${pad}}`;
+  }, [tweaks]);
+
+  useEffect(() => {
+    const onMsg = e => {
+      const d = e.data || {};
+      if (d.type === "__activate_edit_mode") setTweaksOpen(true);
+      if (d.type === "__deactivate_edit_mode") setTweaksOpen(false);
+    };
+    window.addEventListener("message", onMsg);
+    window.parent.postMessage({ type: "__edit_mode_available" }, "*");
+    return () => window.removeEventListener("message", onMsg);
+  }, []);
+
+  const SYSTEM = `You are an AI news curator for architects and visualization artists. Search for 2 recent, real, specific articles or posts about the topic from 2025-2026. Respond ONLY as a valid JSON array, no markdown, no preamble: [{"title":"...","url":"...","exc":"1 sentence teaser","summary":"2 sentences on archviz relevance","date":"Mon DD, YYYY","pop":number 50-99,"trending":boolean}]. If nothing found, return [].`;
+
+  const fetchLive = async () => {
+    setFetching(true); setLivePosts([]); setFetchPct(0);
+    const results = [];
+    for (let i = 0; i < QUERIES.length; i++) {
+      const qry = QUERIES[i];
+      setFetchMsg(`Searching ${qry.src}…`);
+      setFetchPct(Math.round(((i + 1) / QUERIES.length) * 100));
+      try {
+        const raw = await callClaude([{ role: "user", content: `Search: "${qry.q}". Return JSON array of 2 results.` }], SYSTEM);
+        let parsed = [];
+        try {
+          const clean = raw.replace(/```json|```/g, "").trim();
+          const s = clean.indexOf("["), e2 = clean.lastIndexOf("]");
+          if (s !== -1 && e2 !== -1) parsed = JSON.parse(clean.slice(s, e2 + 1));
+        } catch {}
+        for (let j = 0; j < parsed.length; j++) {
+          const item = parsed[j];
+          const thumb = await getThumb(item.url);
+          results.push({
+            src: qry.src, topic: qry.topic || [], tint: qry.tint || "a", dark: qry.dark || false,
+            isLinkedin: qry.isLinkedin || false, hot: !!item.trending,
+            title: item.title || "Untitled", href: item.url || "#",
+            exc: item.exc || item.summary || "", summary: item.summary || item.exc || "",
+            date: item.date || new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+            read: "—", pop: item.pop || 60, thumb: thumb || null,
+            ph: qry.src.toLowerCase(),
+          });
+        }
+      } catch (e) { console.error(qry.src, e); }
+    }
+    setLivePosts(results);
+    if (results[0]) setHeroPost(results[0]);
+    const now = new Date();
+    setUpdatedLabel(now.toLocaleDateString("en-US", { month: "short", day: "numeric" }));
+    try { localStorage.setItem("ai-design-news-live", JSON.stringify({ articles: results, updated: now.toISOString() })); } catch {}
+    setFetching(false); setFetchMsg(""); setFetchPct(0);
+  };
+
+  return (
+    <div className="wrap">
+      <Nav onRefresh={fetchLive} fetching={fetching} />
+      <hr className="hair" />
+      <Masthead updatedLabel={updatedLabel} totalLive={livePosts.length} />
+      <FetchBar fetching={fetching} fetchMsg={fetchMsg} fetchPct={fetchPct} />
+      <FilterBar topic={topic} setTopic={setTopic} week={week} setWeek={setWeek} />
+      <Hero post={heroPost} onOpen={p => setOpenPost(p || STATIC_FEATURED)} />
+      <Feed topic={topic} posts={allPosts} readSet={readSet} onOpen={p => setOpenPost(p)} fetching={fetching} />
+      {tweaks.showSources && <SourcesStrip />}
+      {tweaks.showHistory && <History week={week} setWeek={setWeek} />}
+      <Footer />
+      <Tweaks state={tweaks} setState={setTweaks} visible={tweaksOpen} onClose={() => setTweaksOpen(false)} onResetRead={resetRead} />
+      <AskPanel liveArticles={allPosts} />
+      <Detail post={openPost} onClose={() => setOpenPost(null)} onMarkRead={markRead} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
