@@ -1,6 +1,46 @@
 {
-  "updated": "2026-05-15T06:00:00.000Z",
-  "count": 0,
-  "articles": [],
-  "_note": "Auto-generated every Sunday 07:00 CET by GitHub Actions. Run 'npm run fetch' locally to populate."
+  "updated": "2026-05-15T16:28:39.481Z",
+  "count": 2,
+  "articles": [
+    {
+      "src": "Seedream / ByteDance",
+      "topic": [
+        "img",
+        "people"
+      ],
+      "tint": "a",
+      "dark": false,
+      "isLinkedin": false,
+      "hot": true,
+      "title": "Seedream AI by ByteDance: Models Review (2026)",
+      "href": "https://upsampler.com/blog/seedream-ai-bytedance-image-generator-editor-2026",
+      "exc": "ByteDance's Seedream 5 Lite integrates real-time web search with intelligent spatial reasoning for architectural visualization and product photography.",
+      "summary": "Seedream 5 Lite applies physics understanding, lighting conditions, and spatial relationships automatically—particularly valuable for architectural visualization, product photography, and technical illustrations where accuracy matters. The model considers scene complexity, lighting-dependent edits, and material rendering without extra prompt engineering.",
+      "date": "Apr 12, 2026",
+      "pop": 82,
+      "thumb": null,
+      "ph": "seedream-/-bytedance",
+      "ts": 1778862482013
+    },
+    {
+      "src": "Seedream / ByteDance",
+      "topic": [
+        "img",
+        "people"
+      ],
+      "tint": "a",
+      "dark": false,
+      "isLinkedin": false,
+      "hot": true,
+      "title": "Seedream 5.0 Review: AI Image Generation's New Standard",
+      "href": "https://www.dzine.ai/blog/seedream-5-0-review/",
+      "exc": "ByteDance's Seedream 5.0 dominates architectural rendering with outstanding accuracy, correct perspective, realistic materials, and convincing light behavior including accurate shadows.",
+      "summary": "In head-to-head testing across architectural rendering scenarios, Seedream 5.0 delivered professional visualization quality with correct perspective, physically accurate lighting simulation, and exceptional material rendering for glass, metal, and fabric. The model outperformed competitors for commercial architectural applications requiring photorealism.",
+      "date": "Feb 11, 2026",
+      "pop": 87,
+      "thumb": null,
+      "ph": "seedream-/-bytedance",
+      "ts": 1778862481913
+    }
+  ]
 }
