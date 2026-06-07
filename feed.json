@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31T08:39:22.338Z",
+  "updated": "2026-06-07T08:50:06.197Z",
   "count": 8,
   "articles": [
     {
@@ -12,15 +12,15 @@
       "dark": false,
       "isLinkedin": false,
       "hot": true,
-      "title": "Seedream 5: Complete Guide to ByteDance's Next-Gen AI Image Generator (2026)",
-      "href": "https://createvision.ai/guides/seedream-5-complete-guide",
-      "exc": "ByteDance's Seedream 5 combines real-time web search, visual reasoning, and controllable editing for 2026.",
-      "summary": "Seedream 5 features intelligent spatial reasoning that understands complex relationships between objects and light sources, resulting in ray-tracing-like fidelity improvements. The model includes specialized training in architecture, making it particularly effective for architectural infographics, presentations, and 4K-resolution professional renders without external upscaling.",
-      "date": "Feb 24, 2026",
-      "pop": 87,
+      "title": "Seedream 5.0 AI Image Generator by ByteDance",
+      "href": "https://overchat.ai/models/seedream-5",
+      "exc": "ByteDance's Seedream 5.0 debuts with web search, spatial reasoning, and specialized architecture knowledge in 4K.",
+      "summary": "Released mid-February 2026, Seedream 5.0 includes specialized training in architecture, making it particularly suited for infographics, presentations, and domain-specific visualization work. The model generates native 4K images with intelligent spatial reasoning that understands complex object relationships and lighting—a significant leap for architectural rendering workflows.",
+      "date": "Mar 14, 2026",
+      "pop": 82,
       "thumb": null,
       "ph": "seedream-/-bytedance",
-      "ts": 1780216670578
+      "ts": 1780822120830
     },
     {
       "src": "Seedream / ByteDance",
@@ -32,15 +32,15 @@
       "dark": false,
       "isLinkedin": false,
       "hot": false,
-      "title": "What Is Seedream 4.0? Inside ByteDance's Latest Image AI",
-      "href": "https://sider.ai/blog/ai-tools/what-is-seedream-4-0-inside-bytedance-s-latest-image-ai",
-      "exc": "Seedream 4.0 integrates image generation and editing into a unified architecture for streamlined creative workflows.",
-      "summary": "The unified system allows architects and designers to generate 4K visuals, then refine through inpainting, outpainting, and restyling without switching tools. This consolidation addresses the fragmented pipeline that visualization professionals typically face across multiple software platforms.",
-      "date": "Sep 12, 2025",
-      "pop": 72,
+      "title": "What Is ByteDance Seedream 4.5? AI Image Generation from the Makers of TikTok",
+      "href": "https://www.mindstudio.ai/blog/what-is-bytedance-seedream-4-5",
+      "exc": "Seedream 4.5 consolidates image generation and editing in a single architecture, slashing asset creation timelines by 70%.",
+      "summary": "Launched December 2025, Seedream 4.5's unified architecture supports up to 10 reference images and native 4K output, reducing custom image workflows from 2-4 hours to 30-60 minutes. Marketing teams report significant productivity gains, making this a practical tool for rapid concept visualization and client presentation development in architecture practices.",
+      "date": "Feb 13, 2026",
+      "pop": 76,
       "thumb": null,
       "ph": "seedream-/-bytedance",
-      "ts": 1780216670478
+      "ts": 1780822120730
     },
     {
       "src": "Seedance",
@@ -52,15 +52,15 @@
       "dark": false,
       "isLinkedin": false,
       "hot": true,
-      "title": "Seedance 2.0: ByteDance Tops AI Video in 2026",
+      "title": "Seedance 2.0 Review: ByteDance Tops AI Video in 2026",
       "href": "https://www.buildfastwithai.com/blogs/seedance-2-bytedance-ai-video-2026",
-      "exc": "ByteDance's Seedance 2.0 hits Elo 1,269, beating Veo 3, Sora 2, and Runway Gen-4.5 on video generation benchmarks.",
-      "summary": "Seedance 2.0 uses a unified multimodal audio-video architecture supporting text, images, audio, and video as inputs with director-level control over camera, lighting, and motion. For archviz artists, this represents a breakthrough in generating high-fidelity architectural animations and cinematic walkthroughs from multi-reference inputs including up to 9 images and 3 video clips in a single pass.",
+      "exc": "ByteDance's Seedance 2.0 hits top spot on AI video leaderboards with unified multimodal architecture generating 15-second clips at 1080p.",
+      "summary": "Seedance 2.0's unified audio-video architecture supports up to 9 reference images and 3 video clips in a single pass, offering director-level control over camera movement, lighting, and shadows—critical for archviz workflows requiring precise environmental and spatial articulation. The model's ability to maintain temporal consistency and physics-based motion at higher quality than Google Veo 3 and OpenAI Sora 2 makes it particularly relevant for architectural animation and real-time visualization prototyping.",
       "date": "Mar 29, 2026",
       "pop": 87,
       "thumb": null,
       "ph": "seedance",
-      "ts": 1780216669578
+      "ts": 1780822119830
     },
     {
       "src": "Seedance",
@@ -72,15 +72,15 @@
       "dark": false,
       "isLinkedin": false,
       "hot": false,
-      "title": "SeedVR2: One-Step Video Restoration via Diffusion Adversarial Post-Training",
-      "href": "https://arxiv.org/abs/2506.05301",
-      "exc": "ByteDance's SeedVR2 achieves one-step high-resolution video restoration using adaptive window attention and adversarial post-training.",
-      "summary": "SeedVR2 introduces adaptive window attention that dynamically adjusts to output resolutions, enabling single-step diffusion-based restoration of degraded or compressed videos. This is critical for archviz workflows where AI-generated renders or low-quality client footage need rapid upscaling and artifact removal without multi-step processing bottlenecks.",
-      "date": "Jan 28, 2026",
-      "pop": 72,
+      "title": "What Is Seedance 1.5 Pro? ByteDance's AI Video Generation Model",
+      "href": "https://www.mindstudio.ai/blog/what-is-seedance-1-5-pro-bytedance-video",
+      "exc": "Seedance 1.5 Pro uses a Dual-Branch Diffusion Transformer with 4.5 billion parameters to generate synchronized video and audio simultaneously.",
+      "summary": "The Dual-Branch Diffusion Transformer architecture processes video frames and audio waveforms in parallel, solving sync issues critical for archviz presentations with ambient soundscapes. With planned 4K output support and real-time generation arriving in 2026, Seedance 1.5 Pro's multi-aspect ratio support (16:9, 21:9, 1:1) and synchronized environmental audio positions it as a powerful tool for creating polished architectural walkthroughs and client-ready visualization renders.",
+      "date": "Feb 13, 2026",
+      "pop": 74,
       "thumb": null,
       "ph": "seedance",
-      "ts": 1780216669478
+      "ts": 1780822119730
     },
     {
       "src": "Kling AI",
@@ -92,35 +92,35 @@
       "dark": true,
       "isLinkedin": false,
       "hot": true,
-      "title": "Luma AI vs. Kling AI 2.0: The Premium AI Video Showdown for Independent Filmmakers in 2026",
-      "href": "https://flowith.io/blog/luma-ai-vs-kling-ai-premium-video-generation-filmmakers-2026/",
-      "exc": "Kling 2.0's DiT architecture excels at interior lighting scenarios while delivering 2-3x more clips per dollar than competitors.",
-      "summary": "The comparison highlights Kling 2.0's superior performance in complex interior lighting scenarios, making it particularly valuable for architectural visualization and interior design workflows. For budget-conscious archviz professionals, Kling offers cost-effective quality for architectural interiors and spatial renderings.",
-      "date": "March 19, 2026",
-      "pop": 78,
-      "thumb": null,
-      "ph": "kling-ai",
-      "ts": 1780216668578
-    },
-    {
-      "src": "Kling AI",
-      "topic": [
-        "i2v",
-        "v2v"
-      ],
-      "tint": "h",
-      "dark": true,
-      "isLinkedin": false,
-      "hot": true,
-      "title": "AI Video Generation in 2026: Kling 4K, Topaz 2.5, and What's Actually Worth Using",
-      "href": "https://www.mindstudio.ai/blog/ai-video-generation-2026-kling-topaz",
-      "exc": "Kling now generates native 4K video, enabling higher-resolution architectural visualization and interior design presentations.",
-      "summary": "The upgrade to native 4K output positions Kling as a practical tool for high-resolution architectural walkthroughs and interior design presentations. Visualization artists can leverage this for client presentations and portfolio work requiring broadcast-quality resolution.",
-      "date": "April 28, 2026",
+      "title": "Best AI Video Generation Tools for Architecture and Urban Design Studios",
+      "href": "https://learnarchitecture.net/artificial-intelligence/33845-ai-video-generation-tools.html",
+      "exc": "Kling's 2-minute generation and storyboarding features provide architecture studios the most room for creating long-format walkthrough content.",
+      "summary": "This guide evaluates AI video tools for architecture workflows, highlighting Kling 3.0's extended duration capabilities for architectural walkthroughs and the importance of temporal coherence in maintaining consistent materials and building elements across frames—critical for professional presentations to clients and competition juries.",
+      "date": "May 24, 2026",
       "pop": 82,
       "thumb": null,
       "ph": "kling-ai",
-      "ts": 1780216668478
+      "ts": 1780822118830
+    },
+    {
+      "src": "Kling AI",
+      "topic": [
+        "i2v",
+        "v2v"
+      ],
+      "tint": "h",
+      "dark": true,
+      "isLinkedin": false,
+      "hot": true,
+      "title": "Kling 3.0 All-in-One AI Video Architecture Explained",
+      "href": "https://www.vo3ai.com/blog/kling-30-unifies-generation-editing-and-audio-in-one-architecture-why-rival-ai-v-2026-04-09",
+      "exc": "Kuaishou launched Kling 3.0 with a unified architecture merging video generation, editing, and audio synthesis in one system.",
+      "summary": "Kling 3.0 represents a workflow-first strategy that consolidates the entire production pipeline into a single tool, eliminating the need for architects and visualization artists to juggle multiple platforms. This architectural shift is particularly relevant for teams creating immersive design presentations that require synchronized ambient sound and spatial audio.",
+      "date": "Apr 09, 2026",
+      "pop": 78,
+      "thumb": null,
+      "ph": "kling-ai",
+      "ts": 1780822118730
     },
     {
       "src": "Google DeepMind",
@@ -134,13 +134,13 @@
       "hot": true,
       "title": "The Nano Banana Effect: How Google's Viral AI is Reshaping Architectural Visualization",
       "href": "https://architizer.com/blog/practice/tools/nano-banana-google-viral-ai-architectural-visualization/",
-      "exc": "Google's Nano Banana Pro triggers existential debate in architecture as viral image generation tool redefines rendering workflows.",
-      "summary": "Nano Banana Pro (Gemini 3 Pro Image) demonstrates strong performance in architectural visualization with accurate geometry and scale. The Architizer Journal tests the model on a museum design, revealing both its conceptual power and the continued need for human guidance in translating visual data.",
-      "date": "Jan 5, 2026",
-      "pop": 87,
+      "exc": "Google DeepMind's Nano Banana Pro is sparking an existential debate in architecture about AI's role in design visualization.",
+      "summary": "Architizer explores how Nano Banana Pro (Gemini 3 Pro Image) demonstrates strong spatial understanding and instruction-following for architectural renders, though it still requires human guidance for technical accuracy and consistency across multiple views. The model shows particular promise in interpreting floor plans and generating concept-stage visualizations at various scales.",
+      "date": "Jan 05, 2026",
+      "pop": 82,
       "thumb": null,
       "ph": "google-deepmind",
-      "ts": 1780216667578
+      "ts": 1780822117830
     },
     {
       "src": "Google DeepMind",
@@ -153,14 +153,14 @@
       "isLinkedin": false,
       "hot": true,
       "title": "Renderdrop - Nano Banana PRO For Architectural Visualization",
-      "href": "https://rebusfarm.net/news/renderdrop-nano-banana-pro-for-architectural-visualization/",
-      "exc": "Renderdrop reveals 13 production-ready ArchViz use cases where Nano Banana PRO completes tasks in seconds that previously required hours.",
-      "summary": "Tasks like lighting overhauls, entourage insertion, format resizing, and material swaps are now completed in seconds via Google AI Studio instead of lengthy post-production workflows. Renderdrop positions Nano Banana PRO as a production-ready partner for architectural visualization professionals.",
-      "date": "Dec 9, 2025",
-      "pop": 82,
+      "href": "https://rebusfarm.net/news/renderdrop-nano-banana-pro-for-architectural-visualization",
+      "exc": "YouTube channel Renderdrop demonstrates production-ready workflows integrating Nano Banana Pro into archviz pipelines.",
+      "summary": "This tutorial breakdown shows Nano Banana Pro as a production partner for architectural visualization, capable of material swapping, canvas expansion, mood/lighting overrides, and even experimental camera rotation—all without returning to 3D files. Renderdrop positions AI integration as defining the next decade of the archviz industry.",
+      "date": "Dec 09, 2025",
+      "pop": 76,
       "thumb": null,
       "ph": "google-deepmind",
-      "ts": 1780216667478
+      "ts": 1780822117730
     }
   ]
 }
