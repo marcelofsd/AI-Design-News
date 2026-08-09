@@ -1,47 +1,7 @@
 {
-  "updated": "2026-08-02T08:14:38.601Z",
-  "count": 20,
+  "updated": "2026-08-09T06:46:59.915Z",
+  "count": 16,
   "articles": [
-    {
-      "src": "Seedream / ByteDance",
-      "topic": [
-        "img",
-        "people"
-      ],
-      "tint": "a",
-      "dark": false,
-      "isLinkedin": false,
-      "hot": true,
-      "title": "Seedream 5.0 Pro: AI Rendering That Understands Design",
-      "href": "https://visualizee.ai/blog/seedream-5-0-pro-available",
-      "exc": "ByteDance's newest image model brings design-aware AI rendering with realistic lighting and legible text to architectural visualization platforms.",
-      "summary": "Seedream 5.0 Pro launched July 8, 2026 on Visualizee.ai with capabilities specifically built for architects—accurate light behavior, material physics, and readable text rendering. Unlike earlier generative models, it demonstrates spatial understanding critical for design work, delivering photoreal renders without post-production retouching.",
-      "date": "Jul 08, 2026",
-      "pop": 82,
-      "thumb": null,
-      "ph": "seedream-/-bytedance",
-      "ts": 1785658281539
-    },
-    {
-      "src": "Seedream / ByteDance",
-      "topic": [
-        "img",
-        "people"
-      ],
-      "tint": "a",
-      "dark": false,
-      "isLinkedin": false,
-      "hot": false,
-      "title": "Popular Architecture Prompts for AI Rendering (2026)",
-      "href": "https://www.rundiffusion.com/popular-architecture-prompts",
-      "exc": "RunDiffusion curates tested prompt formulas pairing architectural typologies with optimal AI models including Seedream 4.5 for climate-responsive design visualization.",
-      "summary": "Published April 2026, this guide demonstrates how Seedream 4.5 excels at environmental atmosphere and lighting intensity for desert and climate-driven architectural renders. The article provides production-tested prompts for vernacular modernism, tropical residences, and parametric facades optimized for different AI image generators.",
-      "date": "Apr 07, 2026",
-      "pop": 74,
-      "thumb": null,
-      "ph": "seedream-/-bytedance",
-      "ts": 1785658281439
-    },
     {
       "src": "Seedance",
       "topic": [
@@ -54,13 +14,13 @@
       "hot": true,
       "title": "ByteDance Seedance 2.5: Native 30-Second AI Video, No Stitching Required",
       "href": "https://www.techtimes.com/articles/318975/20260624/bytedance-seedance-25-native-30-second-ai-video-no-stitching-required.htm",
-      "exc": "ByteDance's Seedance 2.5 generates 30-second clips natively without stitching and supports 50 multimodal reference inputs.",
-      "summary": "The model uses a unified joint audio-video generation system with spatial-temporal attention mechanisms to maintain character appearance and lighting consistency across full clips. This breakthrough eliminates visible seams and character drift issues that plague stitched sequences, critical for archviz presentations requiring consistent design elements and lighting scenarios across extended walkthroughs.",
-      "date": "June 24, 2026",
+      "exc": "ByteDance's Seedance 2.5 generates 30-second clips natively without stitching, using unified audio-video architecture.",
+      "summary": "Seedance 2.5 uses a unified joint audio-video generation system that co-processes visual and audio signals in the same latent space, with optimized spatial-temporal attention mechanisms that maintain character appearance, lighting, and motion style across full clip duration. This architectural advance enables architects and visualization artists to create longer, more consistent narrative walkthroughs and presentation videos without visible seams or character drift.",
+      "date": "Jun 24, 2026",
       "pop": 87,
       "thumb": null,
       "ph": "seedance",
-      "ts": 1785658280539
+      "ts": 1786257823294
     },
     {
       "src": "Seedance",
@@ -72,15 +32,35 @@
       "dark": false,
       "isLinkedin": false,
       "hot": true,
-      "title": "Seedance 2.5: Complete Guide to ByteDance's 30-Second AI Video Model",
-      "href": "https://tosea.ai/blog/seedance-2-5-bytedance-ai-video-model-guide",
-      "exc": "ByteDance previewed Seedance 2.5 at its FORCE conference with 30-second single-clip generation and up to 50 multimodal references.",
-      "summary": "Announced at the June 23, 2026 Volcano Engine FORCE conference in Beijing, the model enables finer editing control and coherent long-form generation without segment stitching. For architecture visualization, the ability to hold consistent brand elements and spatial design across 50 reference materials in a single generation could transform client presentation workflows and iterative design reviews.",
-      "date": "June 23, 2026",
+      "title": "Seedance 2.5 Release: What ByteDance Just Shipped",
+      "href": "https://kie.ai/blog/seedance-2-5-release-deep-dive",
+      "exc": "ByteDance shipped Seedance 2.5 with 30-second one-shot video generation and upgraded Seedance 2.0 to 4K output.",
+      "summary": "Seedance 2.5 was officially announced at Volcano Engine 2026 on June 23, delivering 30-second one-shot generation capability while Seedance 2.0 simultaneously gained 4K output support. For archviz professionals, the core upgrade is Long-Form Shot Consistency for longer narratives, more complex sequences, and steadier character rendering—critical for architectural walkthroughs and client presentations requiring sustained visual coherence.",
+      "date": "Jun 23, 2026",
       "pop": 82,
       "thumb": null,
       "ph": "seedance",
-      "ts": 1785658280439
+      "ts": 1786257823194
+    },
+    {
+      "src": "Kling AI",
+      "topic": [
+        "i2v",
+        "v2v"
+      ],
+      "tint": "h",
+      "dark": true,
+      "isLinkedin": false,
+      "hot": true,
+      "title": "Kling 2.0 Review: The Revolutionary AI Video Generator Transforming Content Creation in 2025",
+      "href": "https://kingy.ai/blog/kling-2-0-review-the-revolutionary-ai-video-generator-transforming-content-creation-in-2025/",
+      "exc": "Kling 2.0 leverages a Diffusion Transformer architecture with 3D spatiotemporal attention for high-resolution video generation.",
+      "summary": "The model combines diffusion models with transformer-based processing to handle both static and fluid dynamics in architectural scenes. Its multimodal approach allows text, image, and video inputs to guide video generation, making it valuable for interior design workflow automation.",
+      "date": "Apr 17, 2025",
+      "pop": 82,
+      "thumb": null,
+      "ph": "kling-ai",
+      "ts": 1786257822294
     },
     {
       "src": "Kling AI",
@@ -94,113 +74,53 @@
       "hot": true,
       "title": "Top 15 AI Video Models 2026 for Architects & Designers",
       "href": "https://renderai.app/blog/video-ai-models-for-architects-designers-marketers/",
-      "exc": "Kling 3.0 leads video generation with native 4K output and extended duration specifically for architectural visualization workflows.",
-      "summary": "Kling 3.0 achieves a 4.9 rating for consistency and visual quality in architectural applications, offering native 4K resolution and longer clip generation. Google Veo 3.1 enables architects to pin multiple reference images for material and lighting consistency across client-facing projects.",
+      "exc": "Kling 3.0 leads with native 4K and reference image support for architectural video generation workflows.",
+      "summary": "This comparative guide positions Kling models as top-rated for architectural visualization consistency and quality. Google Veo 3.1's ability to pin reference images ensures materials, lighting, and design details remain consistent—critical for client-facing architectural presentations.",
       "date": "Mar 24, 2026",
-      "pop": 82,
-      "thumb": null,
-      "ph": "kling-ai",
-      "ts": 1785658279539
-    },
-    {
-      "src": "Kling AI",
-      "topic": [
-        "i2v",
-        "v2v"
-      ],
-      "tint": "h",
-      "dark": true,
-      "isLinkedin": false,
-      "hot": false,
-      "title": "Kling 3.0 Tutorial: The Complete Guide to 4K AI Video Generation in 2026",
-      "href": "https://medium.com/@cliprise/kling-3-0-tutorial-the-complete-guide-to-4k-ai-video-generation-in-2026-0e8cfed0e042",
-      "exc": "Kling 3.0 transforms real estate and interior design workflows with dedicated AI video production pipelines launched February 2026.",
-      "summary": "Kuaishou's Kling 3.0 introduced specialized workflows for real estate marketing and interior design visualization. The platform enables sketch-to-render transitions and transforms architectural spaces within minutes using AI-driven video generation.",
-      "date": "Feb 26, 2026",
-      "pop": 76,
-      "thumb": null,
-      "ph": "kling-ai",
-      "ts": 1785658279439
-    },
-    {
-      "src": "Google DeepMind",
-      "topic": [
-        "img",
-        "i2v"
-      ],
-      "tint": "c",
-      "dark": false,
-      "isLinkedin": false,
-      "hot": true,
-      "title": "From Nano Banana to Vision Banana: How Google DeepMind Turned an Image Generator into a Generalist Vision System",
-      "href": "https://diomgis.com/blog/nano-banana-vision-banana-architecture",
-      "exc": "Google's Nano Banana image model was repurposed into Vision Banana, a unified generalist system for segmentation, depth, and normals.",
-      "summary": "Vision Banana demonstrates that image generation architectures can serve as universal vision encoders, outperforming specialist models like SAM 3 and Depth Anything V3 without architectural changes. For archviz artists, this signals a shift toward multi-task AI workflows—depth maps, segmentation masks, and surface normals from a single model could streamline scene composition, material editing, and post-production pipelines.",
-      "date": "Jun 25, 2026",
-      "pop": 82,
-      "thumb": null,
-      "ph": "google-deepmind",
-      "ts": 1785658278539
-    },
-    {
-      "src": "Google DeepMind",
-      "topic": [
-        "img",
-        "i2v"
-      ],
-      "tint": "c",
-      "dark": false,
-      "isLinkedin": false,
-      "hot": true,
-      "title": "Google Veo 3.1 Review 2026: Native 4K Audio-Sync Video Generation",
-      "href": "https://computertech.co/veo-3-1-review/",
-      "exc": "Veo 3.1 delivers 4K video with native synchronized audio and dialogue in a single generation pass, setting a new bar for AI video models.",
-      "summary": "Veo 3.1's Latent Diffusion Transformer co-generates video and audio with temporal sync, vertical 9:16 support, and true 4K texture detail as of January 2026. Archviz professionals can now produce client walkthrough videos, ambient soundscapes, and vertical social content without multi-stage audio post-processing—accelerating presentation turnaround and enabling immersive, narrative-driven architectural storytelling.",
-      "date": "Mar 16, 2026",
       "pop": 88,
       "thumb": null,
-      "ph": "google-deepmind",
-      "ts": 1785658278439
+      "ph": "kling-ai",
+      "ts": 1786257822194
     },
     {
-      "src": "Runway ML",
+      "src": "Google DeepMind",
       "topic": [
-        "v2v",
+        "img",
         "i2v"
       ],
-      "tint": "e",
+      "tint": "c",
       "dark": false,
       "isLinkedin": false,
       "hot": true,
-      "title": "Top 15 AI Video Models 2026 for Architects & Designers",
-      "href": "https://renderai.app/blog/video-ai-models-for-architects-designers-marketers/",
-      "exc": "AI video generation has matured from experimental prototypes into professional-grade tools transforming static renders into compelling presentations.",
-      "summary": "By 2026, image-to-video models generate photorealistic motion in seconds from existing renders without animation software or complex 3D modeling. This eliminates weeks of traditional animation work, enabling firms of all sizes to compete through superior visual storytelling.",
-      "date": "Mar 24, 2026",
+      "title": "Google DeepMind Launches Nano Banana 2 Lite and Gemini Omni Flash",
+      "href": "https://www.tun.com/home/google-deepmind-launches-nano-banana-2-lite-and-gemini-omni-flash/",
+      "exc": "Google DeepMind released two generative media models on June 30, 2026, targeting speed-optimized image generation and conversational video creation.",
+      "summary": "Nano Banana 2 Lite enables rapid, affordable image generation that can be chained with Gemini Omni Flash to animate stills into video clips. The pipeline approach—create an image, then animate it—offers archviz artists a cost-effective workflow for design exploration and client presentations.",
+      "date": "Jun 30, 2026",
       "pop": 78,
       "thumb": null,
-      "ph": "runway-ml",
-      "ts": 1785658277539
+      "ph": "google-deepmind",
+      "ts": 1786257821294
     },
     {
-      "src": "Runway ML",
+      "src": "Google DeepMind",
       "topic": [
-        "v2v",
+        "img",
         "i2v"
       ],
-      "tint": "e",
+      "tint": "c",
       "dark": false,
       "isLinkedin": false,
       "hot": false,
-      "title": "The ArchViz Masterclass is back, now with AI-driven workflows",
-      "href": "https://blog.chaos.com/archviz-masterclass-ai-workflows/",
-      "exc": "The 2026 masterclass series tackles how to embrace rapid evolution of AI-driven visualization workflows while preserving timeless composition principles.",
-      "summary": "The session concludes with Runway workflows, demonstrating how static renders or AI outputs transform into cinematic motion for archviz projects. Over 10,000 artists from 110+ countries have participated in this global movement focused on visual communication.",
-      "date": "Feb 17, 2026",
+      "title": "Google DeepMind Introduces Vision Banana: An Instruction-Tuned Image Generator",
+      "href": "https://www.marktechpost.com/2026/04/25/google-deepmind-introduces-vision-banana-an-instruction-tuned-image-generator-that-beats-sam-3-on-segmentation-and-depth-anything-v3-on-metric-depth-estimation/",
+      "exc": "Vision Banana merges generative and discriminative AI, excelling at both image creation and spatial understanding like segmentation and depth estimation.",
+      "summary": "Released April 22, 2026, Vision Banana demonstrates that generative models can implicitly learn geometry, semantics, and depth—capabilities highly relevant for archviz workflows requiring accurate spatial reasoning and scene composition. This convergence could streamline modeling and rendering pipelines.",
+      "date": "Apr 25, 2026",
       "pop": 72,
       "thumb": null,
-      "ph": "runway-ml",
-      "ts": 1785658277439
+      "ph": "google-deepmind",
+      "ts": 1786257821194
     },
     {
       "src": "Stability AI",
@@ -212,35 +132,35 @@
       "dark": false,
       "isLinkedin": false,
       "hot": true,
-      "title": "Stable Diffusion 3.5: Complete Guide to Open-Source Image AI",
-      "href": "https://www.layer3labs.io/guides/stable-diffusion-3-5-explained",
-      "exc": "Interior designers and architects use SD 3.5 for space concepts and material exploration with reliable prompt interpretation.",
-      "summary": "This guide covers SD 3.5's application in architectural rendering and technical visualization, highlighting its practical use for communicating design intent to stakeholders. The model's Multimodal Diffusion Transformer architecture with three text encoders enables improved semantic understanding for complex archviz prompts.",
-      "date": "Jul 01, 2025",
-      "pop": 78,
-      "thumb": null,
-      "ph": "stability-ai",
-      "ts": 1785658276539
-    },
-    {
-      "src": "Stability AI",
-      "topic": [
-        "img",
-        "material"
-      ],
-      "tint": "f",
-      "dark": false,
-      "isLinkedin": false,
-      "hot": false,
       "title": "AI-Designed Interior: Using Stable Diffusion to Plan AW 2026 Layouts",
       "href": "https://businesscraft.se/design-trend/ai-designed-interior-using-stable-diffusion-to-plan-aw-2026-layouts/",
-      "exc": "Stable Diffusion and Dreambooth enable faster visualization, iteration, and personalization for AW 2026 interior design layouts.",
-      "summary": "This article showcases how Stable Diffusion creates interior visualizations for AW 2026, blending biophilic textures, warm modularism, and sustainable minimalism. The workflow includes training Dreambooth on specific spaces to generate personalized mockups that combine trend forecasting with practical design previews.",
+      "exc": "Stable Diffusion and Dreambooth enable architects to create personalized AW 2026 interior mockups blending trend forecasting with practical previews.",
+      "summary": "This article demonstrates how Stable Diffusion generates interior visualizations for AW 2026 by combining biophilic textures, warm modularism, and sustainable minimalism. It shows archviz professionals can train Dreambooth on 10–20 images of a space to produce personalized mockups that translate moodboards into testable visuals for client presentations.",
       "date": "Jun 25, 2025",
       "pop": 72,
       "thumb": null,
       "ph": "stability-ai",
-      "ts": 1785658276439
+      "ts": 1786257819294
+    },
+    {
+      "src": "Stability AI",
+      "topic": [
+        "img",
+        "material"
+      ],
+      "tint": "f",
+      "dark": false,
+      "isLinkedin": false,
+      "hot": true,
+      "title": "Architectural Visualization: Complete Guide (2026)",
+      "href": "https://superrendersfarm.com/article/architectural-visualization-complete-guide",
+      "exc": "Industry survey reveals 44% of archviz professionals now use AI tools like Stable Diffusion for concept images and early design variations.",
+      "summary": "SuperRenders reports that while Stable Diffusion and Midjourney produce compelling architectural concepts in seconds, they lack precision for final deliverables like exact material finishes and accurate sun angles. The guide positions AI as supplementing early design exploration rather than replacing production rendering pipelines in 2026 workflows.",
+      "date": "Jun 30, 2026",
+      "pop": 85,
+      "thumb": null,
+      "ph": "stability-ai",
+      "ts": 1786257819194
     },
     {
       "src": "Midjourney",
@@ -253,13 +173,13 @@
       "hot": true,
       "title": "Midjourney V7 for Architects: Create Stunning Renders",
       "href": "https://educasium.com/en/blog/midjourney-v7-architectes-rendus-epoustouflants-2026",
-      "exc": "Midjourney V7 delivers photorealistic architectural renders in 2 minutes instead of 48 hours, fundamentally transforming visualization practice.",
-      "summary": "Released in late 2025, V7 offers 10x faster and 20x cheaper rendering than traditional 3D workflows. An AIA survey shows 62% of US architecture firms now use generative AI, up from 18% in 2024, with unprecedented productivity gains in architectural representation.",
-      "date": "Apr 09, 2026",
+      "exc": "Midjourney V7 produces photorealistic architectural renders in 2 minutes instead of 48 hours—10x faster, 20x cheaper than traditional 3D rendering.",
+      "summary": "Released in late 2025, Midjourney V7 has transformed architectural visualization with unprecedented speed and cost efficiency. According to a January 2026 AIA survey, 62% of US architecture firms now use generative AI in their design workflow, up from 18% in 2024, demonstrating widespread professional adoption.",
+      "date": "April 9, 2026",
       "pop": 87,
       "thumb": null,
       "ph": "midjourney",
-      "ts": 1785658275539
+      "ts": 1786257818294
     },
     {
       "src": "Midjourney",
@@ -270,15 +190,15 @@
       "dark": false,
       "isLinkedin": false,
       "hot": true,
-      "title": "Midjourney v7 2026: New Features, Draft Mode & Best Prompts",
-      "href": "https://www.pamistanbul.com/en/pamlab/midjourney-v7-pro-guide-2026",
-      "exc": "V7 reshapes professional workflows with Personalization, Draft Mode, and Omni Reference, evolving into an actual production tool for advertising and architecture.",
-      "summary": "After early access in March 2025, v7 now features character consistency, brand-aesthetic calibration, and integrated web interface at midjourney.com/imagine. Includes architectural visualization prompt formulas with cinema4d + corona renderer style and hyperrealistic materials for archviz professionals.",
-      "date": "Apr 25, 2026",
-      "pop": 82,
+      "title": "Midjourney V7 10 Best Architectural Visualization Prompts for 2025",
+      "href": "https://aiunpacker.com/blog/midjourney-v7-10-best-architectural-visualization-prompts-for-2025/",
+      "exc": "A curated vault of the 10 most effective architectural visualization prompts designed to harness Midjourney V7's full potential for 2025 projects.",
+      "summary": "This guide provides detailed prompt blueprints that help architects generate compelling visualizations that tell a building's story and convince clients. Midjourney V7 has evolved from an AI art tool into a professional-grade asset that demolishes the gap between architectural concepts and emotive visualization.",
+      "date": "December 30, 2025",
+      "pop": 79,
       "thumb": null,
       "ph": "midjourney",
-      "ts": 1785658275439
+      "ts": 1786257818194
     },
     {
       "src": "Adobe Firefly",
@@ -292,13 +212,13 @@
       "hot": true,
       "title": "Adobe Firefly for Architects - Presentations and Design Graphics",
       "href": "https://archgyan.com/adobe-firefly-architects-presentations-graphics/",
-      "exc": "Adobe Firefly architectural interiors and complex urban scenes often look flat or generic, but improvements continue through early 2026.",
-      "summary": "Covers Generative Fill in Photoshop for editing site photos, renders, and presentation images—critical for architects cleaning up site photography, replacing skies, and extending canvases. Discusses commercial-safe training data and prompt sensitivity gaps versus Midjourney for architectural work.",
-      "date": "Apr 07, 2026",
+      "exc": "Practical guide shows architects how to use Firefly for site cleanup, textures, and presentation graphics while navigating quality and credit limits.",
+      "summary": "This 2026 guide addresses Firefly's architectural workflow integration—from generative fill in renders to removing site obstacles—while noting its image quality still trails Midjourney for photorealistic interiors. Heavy users generating dozens of textures daily may exhaust monthly generative credit allocations.",
+      "date": "April 7, 2026",
       "pop": 78,
       "thumb": null,
       "ph": "adobe-firefly",
-      "ts": 1785658274539
+      "ts": 1786257817294
     },
     {
       "src": "Adobe Firefly",
@@ -309,16 +229,16 @@
       "tint": "g",
       "dark": false,
       "isLinkedin": false,
-      "hot": true,
-      "title": "How Adobe thinks creatives will use AI in 2026 – from Firefly to Project Graph",
-      "href": "https://www.creativebloq.com/tech/from-firefly-to-graph-how-adobe-thinks-creatives-will-use-ai-in-2026",
-      "exc": "Adobe integrates third-party AI models like Runway, Flux and Nano Banana directly into Firefly workflows for diverse creative production.",
-      "summary": "Adobe sees creatives combining Photoshop, Firefly, and Premiere with third-party engines for ideation and iteration via Firefly Boards—relevant for archviz teams pooling references, testing concepts, and rapidly remixing visualization assets in collaborative environments.",
-      "date": "Jan 02, 2026",
-      "pop": 82,
+      "hot": false,
+      "title": "Adobe Updates Creative Cloud And Firefly At Adobe MAX London 2025",
+      "href": "https://www.forbes.com/sites/moorinsights/2025/05/01/adobe-updates-creative-cloud-and-firefly-at-adobe-max-london-2025/",
+      "exc": "Firefly Image Model 4 debuts with 2K native resolution and improved rendering of architecture, landscapes, and humans.",
+      "summary": "MAX London 2025 unveiled Firefly Image Model 4 with 2K output and enhanced architectural rendering, plus third-party model integration including Google. For archviz artists, the improved resolution and architecture-specific training data mean higher-fidelity context images and faster iteration on presentation visuals.",
+      "date": "May 1, 2025",
+      "pop": 72,
       "thumb": null,
       "ph": "adobe-firefly",
-      "ts": 1785658274439
+      "ts": 1786257817194
     },
     {
       "src": "Hugging Face",
@@ -332,13 +252,13 @@
       "hot": true,
       "title": "Hunyuan 3D API: What Builders Should Know",
       "href": "https://wavespeed.ai/blog/posts/hunyuan-3d-api/",
-      "exc": "Tencent's Hunyuan3D 2.1 delivers production-ready PBR workflows for 3D asset generation via API.",
-      "summary": "Hunyuan3D 2.1 (June 2025) offers GLB export with configurable PBR textures, enabling game studios and visualization teams to automate asset pipelines. The API supports geometry-only modes, sketch inputs, and format conversion for downstream tools like Unreal and Blender.",
+      "exc": "Tencent's Hunyuan3D 2.1 brings production-ready PBR texture generation to image-to-3D workflows with GLB output.",
+      "summary": "Hunyuan3D 2.1 (June 2025) offers a production-ready PBR pipeline with configurable polygon counts, GLB export, and full open-source access. Game studios are now evaluating integration for asset pipelines, weapon variants, and character modeling—replacing weeks-long contracted workflows with automated generation.",
       "date": "Jun 09, 2026",
-      "pop": 87,
+      "pop": 82,
       "thumb": null,
       "ph": "hugging-face",
-      "ts": 1785658273539
+      "ts": 1786257816294
     },
     {
       "src": "Hugging Face",
@@ -352,53 +272,53 @@
       "hot": true,
       "title": "Best Image to 3D Models on HuggingFace (2026)",
       "href": "https://trellis2.app/blog/best-image-to-3d-models-huggingface",
-      "exc": "Hunyuan3D 2.1 ranks as best for high-fidelity textures among open-source image-to-3D models on HuggingFace.",
-      "summary": "Comparison testing in April 2026 positions Hunyuan3D 2.1 as the top choice for PBR material output in architectural and product visualization workflows. Open-source models on HuggingFace now allow local execution and custom pipeline integration without per-generation costs.",
+      "exc": "HuggingFace's 2026 image-to-3D ecosystem now includes TRELLIS.2-4B and Hunyuan3D 2.1 for production-grade PBR assets.",
+      "summary": "The 2026 HuggingFace ecosystem includes models from Microsoft, Tencent, Stability AI, NVIDIA, and Meta, offering locally runnable, fine-tunable options for custom archviz pipelines. TRELLIS.2-4B leads for production-grade PBR assets with MIT licensing, while Hunyuan3D 2.1 delivers the highest-fidelity textures and materials.",
       "date": "Apr 11, 2026",
-      "pop": 82,
+      "pop": 78,
       "thumb": null,
       "ph": "hugging-face",
-      "ts": 1785658273439
+      "ts": 1786257816194
     },
     {
       "src": "LinkedIn",
       "topic": [
-        "img",
-        "i2v"
+        "v2v",
+        "model"
       ],
-      "tint": "a",
+      "tint": "c",
       "dark": false,
       "isLinkedin": true,
       "hot": true,
-      "title": "AI Architectural Rendering Tools in 2026: 6 Options Compared",
-      "href": "https://blog.chaos.com/best-ai-rendering-tools-for-architects-compared",
-      "exc": "Six leading AI rendering tools evaluated for how they balance artistic impact with technical precision required for professional BIM workflows.",
-      "summary": "Chaos compares six AI rendering platforms including Veras (with integration into 7 major BIM/CAD platforms) and Midjourney, evaluating pricing, BIM integration, and workflow fit. The guide notes 44% of architects now use AI for concept images according to the Chaos State of ArchViz Report 2025.",
-      "date": "Jun 18, 2026",
-      "pop": 82,
+      "title": "AI vs. Render Farm: Professional Archviz Workflow 2026",
+      "href": "https://www.aifire.co/p/ai-vs-render-farm-professional-archviz-workflow-2026",
+      "exc": "Kling AI 2.6's First & Last Frame workflow lets architects replace 850+ frame renders with just two keyframes.",
+      "summary": "This article demonstrates how Kling AI 2.6 transforms architectural visualization by interpolating smooth camera motion between two high-fidelity 3D renders, eliminating the need for expensive render farms while maintaining stable geometry and consistent lighting without typical AI warping.",
+      "date": "Jan 26, 2026",
+      "pop": 87,
       "thumb": null,
       "ph": "linkedin",
-      "ts": 1785658272539
+      "ts": 1786257814294
     },
     {
       "src": "LinkedIn",
       "topic": [
-        "img",
-        "i2v"
+        "v2v",
+        "model"
       ],
-      "tint": "a",
+      "tint": "c",
       "dark": false,
       "isLinkedin": true,
       "hot": false,
-      "title": "15 Best AI Interior Design Tools 2026 (Tested & Compared)",
-      "href": "https://www.toolworthy.ai/blog/best-ai-interior-design-tools",
-      "exc": "Hands-on testing of 20 AI interior design tools against measurable criteria including AI-driven redesign, staging, and layout generation capabilities.",
-      "summary": "ToolWorthy evaluated tools like Spacely AI, Foyr Neo, and Planner 5D through hands-on testing of free tiers and trial accounts, focusing on commercial-use rights, output quality on challenging rooms, and workflow integration. Special attention paid to which tools produce buildable layouts versus just attractive visuals.",
-      "date": "Apr 17, 2026",
-      "pop": 76,
+      "title": "Best AI Tools for Architectural Animation in 2026: 10 Platforms Compared for Archviz Professionals",
+      "href": "https://visiomake.com/en/blog/best-ai-tools-for-architectural-animation-2026",
+      "exc": "Comprehensive comparison of Kling, Runway, Luma, Kaiber, and Pika for architectural animation workflows.",
+      "summary": "Evaluates AI video generators specifically for architecture teams producing presentation clips and reels from still renders, with guidance on choosing between realism-focused tools versus experimental/storytelling platforms based on project priorities like geometry adherence and camera control.",
+      "date": "Apr 12, 2026",
+      "pop": 79,
       "thumb": null,
       "ph": "linkedin",
-      "ts": 1785658272439
+      "ts": 1786257814194
     }
   ]
 }
